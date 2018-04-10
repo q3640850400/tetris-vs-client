@@ -5,6 +5,7 @@ console.log(`I\`m client`)
 const WebSocket =require('ws')
 
 const options={
+    data:{x:3,y:4},
     x:1,
     y:2
 }
