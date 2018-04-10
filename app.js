@@ -5,9 +5,9 @@ console.log(`I\`m client`)
 const WebSocket =require('ws')
 
 const options={
-    data:{x:3,y:4},
-    x:1,
-    y:2
+    headers:{
+        flueid:'0000000001'
+    }
 }
 const ws=new WebSocket(
     'ws://localhost:3005',options
