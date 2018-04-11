@@ -13,15 +13,38 @@ const ws=new WebSocket(
     'ws://localhost:3005',options
     
 )
-var msg={
-    code:'ready0',
-    no:'0000000001'
-}
 ws.on('open', function open() {
     console.log(`连接成功`)
+    var msg={
+        code:'ready0',
+        data:'0000000001'
+    }
     ws.send(JSON.stringify(msg));
   });
-  
-ws.on('message', function incoming(data) {
-    console.log(data);
+ws.on('message', function incoming(message) {
+    console.log(message);
+    var inmsg=JSON.parse(message)
+    switch(inmsg.code){
+        case 'start':{
+            var outmsg={
+                code:'score',
+                data:'96956'
+            }
+            ws.send(JSON.stringify(outmsg))
+            outmsg={
+                code:'update',
+                date:[1,2,3,4,5,6,7,8]
+            }
+            ws.send(JSON.stringify(outmsg))
+            break
+        }
+        case 'pool':{
+            var outmsg={
+                code:'ready1'
+            }
+            ws.send(JSON.stringify(outmsg))
+            break
+        }
+        default:{break}
+    }
 });
