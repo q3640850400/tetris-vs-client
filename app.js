@@ -13,10 +13,13 @@ const ws=new WebSocket(
     'ws://localhost:3005',options
     
 )
-
+var msg={
+    code:'ready0',
+    no:'0000000001'
+}
 ws.on('open', function open() {
     console.log(`连接成功`)
-    ws.send('something');
+    ws.send(JSON.stringify(msg));
   });
   
 ws.on('message', function incoming(data) {
