@@ -10,7 +10,7 @@ const options={
     }
 }
 const ws=new WebSocket(
-    'ws://localhost:3005',options
+    'ws://139.199.37.143:3005',options
     
 )
 ws.on('open', function open() {
